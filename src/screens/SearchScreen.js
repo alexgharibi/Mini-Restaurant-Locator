@@ -11,6 +11,7 @@ const SearchScreen = () => {
         onTermChange={(newTerm) => {
           setTerm(newTerm);
         }}
+        onTermSubmit={() => console.log("hi")}
       />
       <Text>Search Screen</Text>
       <Text>{term}</Text>
