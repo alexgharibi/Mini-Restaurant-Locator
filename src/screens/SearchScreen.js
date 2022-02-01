@@ -28,6 +28,7 @@ const SearchScreen = () => {
       <ResultsList title="Cost Effective" results={filterResultsByPrice("$")} />
       <ResultsList title="Bit Pricier" results={filterResultsByPrice("$$")} />
       <ResultsList title="Big Spender" results={filterResultsByPrice("$$$")} />
+      <ResultsList title="Expensive" results={filterResultsByPrice("$$$$")} />
     </View>
   );
 };
