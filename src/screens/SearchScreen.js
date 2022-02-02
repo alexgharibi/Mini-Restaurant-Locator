@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import SearchBar from "../components/SearchBar";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, ScrollView } from "react-native";
 import useResults from "../hooks/useResults";
 import ResultsList from "../components/ResultsList";
 
@@ -15,7 +15,7 @@ const SearchScreen = () => {
   };
 
   return (
-    <View>
+    <>
       <SearchBar
         term={term}
         onTermChange={(newTerm) => {
@@ -24,12 +24,18 @@ const SearchScreen = () => {
         onTermSubmit={() => searchApi(term)}
       />
       {error ? <Text>{error}</Text> : null}
-      <Text>{results.length}</Text>
-      <ResultsList title="Cost Effective" results={filterResultsByPrice("$")} />
-      <ResultsList title="Bit Pricier" results={filterResultsByPrice("$$")} />
-      <ResultsList title="Big Spender" results={filterResultsByPrice("$$$")} />
-      <ResultsList title="Expensive" results={filterResultsByPrice("$$$$")} />
-    </View>
+      <ScrollView>
+        <ResultsList
+          title="Cost Effective"
+          results={filterResultsByPrice("$")}
+        />
+        <ResultsList title="Bit Pricier" results={filterResultsByPrice("$$")} />
+        <ResultsList
+          title="Big Spender"
+          results={filterResultsByPrice("$$$")}
+        />
+      </ScrollView>
+    </>
   );
 };
 
